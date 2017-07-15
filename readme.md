@@ -21,15 +21,43 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
 
-##
-Laravel_Crud
-step.1
--Download or clone !
-step.2
--copy .env.example files and save as .env then change the database name,user,pass with your existing one.
-step.3
--in your command inside the directory folder type $ php artisan migrate 
--the access url localhost:8000/crud
+## Installation Laravel_Crud
+
+
+Clone the repo
+```
+git clone https://github.com/kramzhels/laravel_crud.git
+```
+
+Move to the newly created folder and install all dependencies:
+```
+cd laravel_crud
+composer install
+```
+
+Create a new database, for example with phpMyAdmin. Then open the .env.example file, edit it to match your database name, username and password and save it as .env file. Once done, build tables with the following command:
+```
+php artisan migrate
+```
+
+Now fill the tables:
+```
+php artisan db:seed
+```
+
+Finally, generate the application key 
+```
+php artisan key:generate
+```
+
+Open your favorite browser and visit the newly created app.
+
+## Features
+1. Create 
+2. Edit 
+3. Delete 
+4. Sweetalert 
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
