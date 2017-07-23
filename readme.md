@@ -56,7 +56,7 @@ Open your favorite browser and visit the newly created app.
 1. Create 
 2. Edit 
 3. Delete 
-4. Sweetalert 
+4. Sweetalert pop-up
 
 ## Learning Laravel
 

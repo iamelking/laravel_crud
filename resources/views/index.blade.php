@@ -6,7 +6,7 @@
     <button type="button" class="btn btn-primary" id="btnAdd">Add New</button>
     <br>
     <br>
-	<table class="table table-striped" id="tblData">
+	<table class="table table-striped" id="tblData" cellspacing="0" width="100%">
     {{csrf_field()}}
         <thead>
             <tr>
@@ -122,20 +122,23 @@
 <script type="text/javascript" charset="utf-8" async defer>
 
 //ajax header need for deleted and updating data
-    $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-    });
+   
     var table;
 
 //datatables serverSide
     $('document').ready(function(){
-        table = $('#tblData').DataTable({
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+        table = $('#tblData').DataTable({ 
+            stateSave: true,
+            responsive: true,
             processing: true,
             serverSide : true,
             order : [0,'desc'],
-            ajax : '{{route('crud.index')}}',
+            ajax :  '{{route('crud.index')}}',
             columns: [
                 {data: 'id' , name : 'id' },
                 {data: 'name' , name : 'name' },
@@ -146,6 +149,7 @@
                 {data: 'action' , name : 'action', orderable : false ,searchable: false},
             ]
         });
+        // table.draw(false);
     });
 //calling add modal 
     $('#btnAdd').click(function(e){
@@ -234,7 +238,7 @@
     });
 
 // updating data infomation
-    $('#btnUpdate').click(function(e){
+    $('#btnUpdate').on('click',function(e){
         e.preventDefault();
         var url = "http://localhost:8000/crud/"+$('#edit_ID').val();
         var frm = $('#frmDataEdit');
